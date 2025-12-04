@@ -1,0 +1,16 @@
+# Define the pipeline stages
+
+stages:
+    - test
+
+# Define the job for running tests
+test:
+    stage: test
+    image: node:20
+    script:
+        - npm ci
+        - npm run test:ci
+    artifacts:
+        when: always
+        reports:
+            junit: test-results.xml

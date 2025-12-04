@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Running next lint"
+
+npm run lint
+
+# Exit if linting fails
+if [ $? -ne 0 ]; then
+    echo "Linting failed. Please fix errors before pushing."
+    exit 1
+fi
+
+# If linting succeeds
+echo "Linting passed. Proceeding with push."
+exit 0

@@ -1,2 +1,5 @@
-# CU_Y2_Verbal_Game_Proto
-In CM6312, you are required to create a prototype for a verbal game, which is akin to adventure games where players make decisions, choose different paths, and the game adapts based on their choices. This game includes standard game controls (pause, restart, etc.), your task is to develop a web-based version of the game as part of your coursework.
+# Vue 3 + TypeScript + Vite
+
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+
+Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).

@@ -1,0 +1,5 @@
+// This config combines the backend node configs and the client vue configs
+{
+	"files": [],
+	"references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+}

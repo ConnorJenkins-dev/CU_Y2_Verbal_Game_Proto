@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Running prettier"
+
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js\|\.jsx\|\.ts\|\.tsx\|\.css\|\.scss\|\.html\|\.mjs')
+
+if [ -n "$staged_files" ]; then
+    # Run prettier on staged files
+    echo "Running prettier on staged files..."
+    npx prettier --write $staged_files
+
+    # Re-add files changed by prettier
+    for file in $staged_files; do
+        if ! git diff --cached --quiet -- "$file"; then
+            git add "$file"
+            echo "Adding modified file: $file"
+        fi
+    done
+fi
+
+# Proceed with commit
+exit 0
