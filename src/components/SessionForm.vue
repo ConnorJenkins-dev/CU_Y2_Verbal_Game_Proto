@@ -1,6 +1,6 @@
 <template>
 	<section id="account_submission" class="max-w-xl mx-auto p-8 bg-white shadow-md rounded-lg">
-		<form class="space-y-6" @submit.prevent>
+		<form v-if="!submitted" class="space-y-6" @submit.prevent="submitForm">
 			<h2 class="text-2xl font-semibold text-center text-gray-800">Session Statistics</h2>
 
 			<div class="form-group">
@@ -98,11 +98,14 @@
 			<button
 				type="submit"
 				class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300"
-				@click="submitForm"
 			>
 				Submit
 			</button>
 		</form>
+		<div v-if="submitted">
+			<h2>Thank you!</h2>
+			<p>Your form has been submitted.</p>
+		</div>
 	</section>
 </template>
 <script setup>
@@ -120,6 +123,8 @@ const formData = ref({
 	restartCount: 0,
 	endGameCount: 0,
 });
+
+const submitted = ref(false);
 
 // Form fields
 const username = ref('');
@@ -140,15 +145,21 @@ const submitForm = async () => {
 	formData.value.restartCount = restartCount.value;
 	formData.value.endGameCount = endGameCount.value;
 
-	const sessionStatistics = new SessionStatistics()
-		.setUsername(formData.value.username)
-		.setEmail(formData.value.email)
-		.setSecondsPlayed(formData.value.secondsPlayed)
-		.setAudioTextSpeedAdd(formData.value.increaseSpeed)
-		.setAudioTextSpeedSubtract(formData.value.decreaseSpeed)
-		.setGameRestartCount(formData.value.restartCount)
-		.setGameEndCount(formData.value.endGameCount)
-		.build();
-	await sessionStatsService(sessionStatistics);
+	try {
+		const sessionStatistics = new SessionStatistics()
+			.setUsername(formData.value.username)
+			.setEmail(formData.value.email)
+			.setSecondsPlayed(formData.value.secondsPlayed)
+			.setAudioTextSpeedAdd(formData.value.increaseSpeed)
+			.setAudioTextSpeedSubtract(formData.value.decreaseSpeed)
+			.setGameRestartCount(formData.value.restartCount)
+			.setGameEndCount(formData.value.endGameCount)
+			.build();
+		await sessionStatsService(sessionStatistics);
+	} catch (error) {
+		console.error('Error submitting session statistics:', error);
+	} finally {
+		submitted.value=true;
+	}
 };
 </script>
