@@ -15,6 +15,7 @@ import getUsersRoutes from './routes/getUsers';
 import narrativeRoutes from './routes/narrative';
 import sessionStatsRoutes from './routes/sessionStats';
 import openAiRoutes from './routes/openAi';
+// import huggingFaceRoutes from './routes/huggingFace';
 
 
 const app = express();
@@ -27,6 +28,19 @@ app.use(
 );
 app.use(express.static(distPath)); // Middleware for parsing JSON
 app.use(express.json());
+app.use(express.urlencoded());
+app.use(
+	express.raw({
+		type: [
+			'audio/webm',
+			'audio/wav',
+			'audio/mpeg',
+			'audio/mp3',
+			'audio/ogg',
+		],
+		limit: '25mb',
+	})
+); // Middleware for parsing raw audio data
 
 // Register routes
 app.use('/api/userGraph', userGraphRoutes);
@@ -35,6 +49,7 @@ app.use('/api/getUsers', getUsersRoutes);
 app.use('/api/narrative', narrativeRoutes);
 app.use('/api/openAi', openAiRoutes);
 app.use('/api/sessionStats', sessionStatsRoutes);
+// app.use('/api/huggingFace', huggingFaceRoutes);
 
 app.get("*", (req, res) => {
 	res.sendFile(path.join(distPath, "index.html"));
