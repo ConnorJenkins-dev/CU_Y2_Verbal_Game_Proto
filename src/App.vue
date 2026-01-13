@@ -2,14 +2,14 @@
 import { computed, ref } from 'vue';
 
 const navStyle = ref({
-	backgroundImage: 'url(src/assets/Pictures/background.jpg)',
+	backgroundImage: 'url(Pictures/background.jpg)',
 	backgroundSize: 'cover',
 	backgroundPosition: 'center', // Optional: Keeps the background centered
 	width: '100%',
 });
 
 const logoImage = computed(() => {
-	const imagePath = `/src/assets/Pictures/end.jpg`;
+	const imagePath = `/Pictures/end.jpg`;
 	return new URL(imagePath, import.meta.url).href;
 });
 </script>

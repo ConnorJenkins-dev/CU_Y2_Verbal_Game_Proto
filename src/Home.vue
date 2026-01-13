@@ -106,7 +106,7 @@ const visitNode = () => {
 };
 
 const stageImage = computed(() => {
-	const imagePath = `/src/assets/Pictures/${stagePicture.value}`;
+	const imagePath = `/Pictures/${stagePicture.value}`;
 	return new URL(imagePath, import.meta.url).href;
 });
 

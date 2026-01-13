@@ -1,5 +1,12 @@
 import express, { Response } from 'express';
 import cors from 'cors';
+import path from "path";
+import { dirname } from "path"; 
+import { fileURLToPath } from 'url';
+
+const _filename = fileURLToPath(import.meta.url);
+const _dirname = dirname(_filename);
+const distPath = path.join(_dirname, "..", "..", "dist");
 
 // Import routes
 import userGraphRoutes from './routes/userGraph';
@@ -9,6 +16,7 @@ import narrativeRoutes from './routes/narrative';
 import sessionStatsRoutes from './routes/sessionStats';
 import openAiRoutes from './routes/openAi';
 
+
 const app = express();
 app.use(
 	cors({
@@ -17,7 +25,8 @@ app.use(
 		allowedHeaders: ['Content-Type'], // Allow specific headers
 	}),
 );
-app.use(express.json()); // Middleware for parsing JSON
+app.use(express.static(distPath)); // Middleware for parsing JSON
+app.use(express.json());
 
 // Register routes
 app.use('/api/userGraph', userGraphRoutes);
@@ -27,8 +36,8 @@ app.use('/api/narrative', narrativeRoutes);
 app.use('/api/openAi', openAiRoutes);
 app.use('/api/sessionStats', sessionStatsRoutes);
 
-app.get('/', (req: Request, res: Response) => {
-	res.send('Hello, World! (From Express server)');
+app.get("*", (req, res) => {
+	res.sendFile(path.join(distPath, "index.html"));
 });
 
 const port = process.env.PORT || 3000;
