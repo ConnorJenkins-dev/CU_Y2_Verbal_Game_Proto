@@ -26,6 +26,7 @@ app.use(
 	}),
 );
 app.use(express.static(distPath)); // Middleware for parsing JSON
+app.use(express.json());
 
 // Register routes
 app.use('/api/userGraph', userGraphRoutes);
