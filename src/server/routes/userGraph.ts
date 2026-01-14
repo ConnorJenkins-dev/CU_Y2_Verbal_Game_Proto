@@ -1,14 +1,17 @@
 import express, { Response } from 'express';
 import mariadb from 'mariadb';
+import dotenv from 'dotenv';
 const router = express.Router();
 
-const pool = mariadb.createPool({
-	host: 'localhost',
-	user: 'root',
-	password: 'comsc',
-	database: 'aiko_db',
-});
+dotenv.config();
 
+// pool for DB connection
+const pool = mariadb.createPool({
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_NAME,
+});
 // Switch case function to determine which data to request
 router.get('/', async (req: Request, res: Response) => {
 	const inputType = req.query.type as 'year' | 'month' | 'week';

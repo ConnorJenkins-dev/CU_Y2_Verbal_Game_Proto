@@ -1,5 +1,8 @@
 import express, { Request, Response } from 'express';
 import type { Pool } from 'mariadb';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 let MariaDB: typeof import('mariadb') | null = null;
 let dbPool: Pool | null = null;
@@ -10,10 +13,10 @@ async function getDBPool(): Promise<Pool> {
 			MariaDB = await import('mariadb');
 		}
 		dbPool = MariaDB.createPool({
-			host: 'localhost',
-			user: 'root',
-			password: 'comsc',
-			database: 'aiko_db',
+			host: process.env.DB_HOST,
+			user: process.env.DB_USER,
+			password: process.env.DB_PASSWORD,
+			database: process.env.DB_NAME,
 		});
 	}
 	return dbPool;
