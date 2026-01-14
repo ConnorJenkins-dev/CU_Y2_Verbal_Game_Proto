@@ -15,7 +15,6 @@ import getUsersRoutes from './routes/getUsers';
 import narrativeRoutes from './routes/narrative';
 import sessionStatsRoutes from './routes/sessionStats';
 import openAiRoutes from './routes/openAi';
-// import huggingFaceRoutes from './routes/huggingFace';
 
 
 const app = express();
@@ -49,7 +48,6 @@ app.use('/api/getUsers', getUsersRoutes);
 app.use('/api/narrative', narrativeRoutes);
 app.use('/api/openAi', openAiRoutes);
 app.use('/api/sessionStats', sessionStatsRoutes);
-// app.use('/api/huggingFace', huggingFaceRoutes);
 
 app.get("*", (req, res) => {
 	res.sendFile(path.join(distPath, "index.html"));
