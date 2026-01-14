@@ -27,6 +27,19 @@ app.use(
 );
 app.use(express.static(distPath)); // Middleware for parsing JSON
 app.use(express.json());
+app.use(express.urlencoded());
+app.use(
+	express.raw({
+		type: [
+			'audio/webm',
+			'audio/wav',
+			'audio/mpeg',
+			'audio/mp3',
+			'audio/ogg',
+		],
+		limit: '25mb',
+	})
+); // Middleware for parsing raw audio data
 
 // Register routes
 app.use('/api/userGraph', userGraphRoutes);

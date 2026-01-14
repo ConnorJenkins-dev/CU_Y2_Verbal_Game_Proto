@@ -42,7 +42,7 @@ function recordContinuous() {
 					sTT(audioBlob);
 				}
 			};
-			mediaRecorder.start(1000);
+			mediaRecorder.start(5000);
 			isRecording.value = true;
 		});
 	} catch (error) {
