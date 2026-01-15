@@ -5,7 +5,7 @@ export async function getUserCount(scale: string) {
 	}
 	try {
 		// Requests user data with a year scale
-		const response = await fetch('http://localhost:3000/api/userGraph?type=' + scale);
+		const response = await fetch('/api/userGraph?type=' + scale);
 		return await response.json();
 	} catch (error) {
 		console.error('Error:', error);

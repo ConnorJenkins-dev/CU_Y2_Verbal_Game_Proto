@@ -1,5 +1,5 @@
 export async function userService() {
-	let address = 'http://localhost:3000/api/getUsers';
+	let address = '/api/getUsers';
 	try {
 		const response = await fetch(address);
 
@@ -15,7 +15,7 @@ export async function userService() {
 }
 
 export async function checkUserInDB(username: string) {
-	let address = `http://localhost:3000/api/getUsers/${username}`;
+	let address = `/api/getUsers/${username}`;
 	try {
 		const response = await fetch(address);
 
@@ -37,7 +37,7 @@ export async function addUser(username: string) {
 	};
 	// send data to the server
 	try {
-		await fetch(`http://localhost:3000/api/addUser${username}`, {
+		await fetch(`/api/addUser${username}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

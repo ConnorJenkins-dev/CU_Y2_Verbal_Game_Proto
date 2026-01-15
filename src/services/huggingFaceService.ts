@@ -1,6 +1,6 @@
 // Using internal API to avoid CORS issues
 export async function speechToText(audio: Blob) {
-	const response = await fetch('http://localhost:3000/api/openai/stt', {
+	const response = await fetch('/api/openai/stt', {
 		method: 'POST',
 		headers: {
 			'Content-Type': audio.type || 'audio/webm', // or audio/wav, etc

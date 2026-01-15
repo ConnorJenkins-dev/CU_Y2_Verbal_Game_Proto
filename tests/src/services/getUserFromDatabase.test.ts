@@ -26,7 +26,7 @@ describe('userService', () => {
 		// Assertions
 		expect(data).toEqual(expectedUsers);
 		expect(global.fetch).toHaveBeenCalledTimes(1); // Ensure fetch was called once
-		expect(global.fetch).toHaveBeenCalledWith('http://localhost:3000/api/getUsers'); // Ensure fetch was called with the correct URL
+		expect(global.fetch).toHaveBeenCalledWith('/api/getUsers'); // Ensure fetch was called with the correct URL
 	});
 
 	test('should return an ID of 1', async () => {

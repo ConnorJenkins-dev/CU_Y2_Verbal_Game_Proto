@@ -26,7 +26,7 @@ export async function sessionStatsService(sessionData: SessionData) {
 // Add session data to the database
 async function addSessionStats(sessionData: SessionData) {
 	console.log('sSS addSesh Called with data: ', sessionData);
-	const response = await fetch('http://localhost:3000/api/sessionStats', {
+	const response = await fetch('/api/sessionStats', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ async function addNewUser(username: string) {
 	};
 
 	try {
-		await fetch(`http://localhost:3000/api/getUsers/addUser/${username}`, {
+		await fetch(`/api/getUsers/addUser/${username}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

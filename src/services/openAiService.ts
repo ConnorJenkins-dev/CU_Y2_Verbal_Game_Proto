@@ -20,7 +20,7 @@ export async function phraseMatch(phrase: string, option1: string, option2: stri
 		'\nWhich option matches the phrase? ' +
 		'Remember, the only acceptable responses are "option1", "option2", or "null".';
 	console.log(JSON.stringify({ prompt }));
-	const response = await fetch('http://localhost:3000/api/openAi', {
+	const response = await fetch('/api/openAi', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

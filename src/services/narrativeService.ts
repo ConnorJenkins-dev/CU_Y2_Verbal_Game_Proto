@@ -1,5 +1,5 @@
 export async function getNarrativeById(narrativeId: number) {
-	const response = await fetch(`http://localhost:3000/api/narrative/${narrativeId}`);
+	const response = await fetch(`/api/narrative/${narrativeId}`);
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
@@ -7,7 +7,7 @@ export async function getNarrativeById(narrativeId: number) {
 }
 
 export async function getOption1ForNarrative(narrativeId: number) {
-	const response = await fetch(`http://localhost:3000/api/narrative/${narrativeId}/choice1`);
+	const response = await fetch(`/api/narrative/${narrativeId}/choice1`);
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
@@ -15,7 +15,7 @@ export async function getOption1ForNarrative(narrativeId: number) {
 }
 
 export async function getOption2ForNarrative(narrativeId: number) {
-	const response = await fetch(`http://localhost:3000/api/narrative/${narrativeId}/choice2`);
+	const response = await fetch(`/api/narrative/${narrativeId}/choice2`);
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
@@ -23,7 +23,7 @@ export async function getOption2ForNarrative(narrativeId: number) {
 }
 
 export async function getNarratives() {
-	const response = await fetch('http://localhost:3000/api/narrative');
+	const response = await fetch('/api/narrative');
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
@@ -31,7 +31,7 @@ export async function getNarratives() {
 }
 
 export async function addProgress(narrativeId: number, optionNumber: number, currentUser: number) {
-	const response = await fetch(`http://localhost:3000/api/narrative/${narrativeId}/progress`, {
+	const response = await fetch(`/api/narrative/${narrativeId}/progress`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export async function addProgress(narrativeId: number, optionNumber: number, cur
 }
 
 export async function resetProgress(currentUser: number) {
-	const response = await fetch(`http://localhost:3000/api/narrative/progress/reset`, {
+	const response = await fetch(`/api/narrative/progress/reset`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export async function resetProgress(currentUser: number) {
 }
 
 export async function getPercent(stageId: string) {
-	const response = await fetch(`http://localhost:3000/api/narrative/choiceCount/${stageId}`);
+	const response = await fetch(`/api/narrative/choiceCount/${stageId}`);
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}

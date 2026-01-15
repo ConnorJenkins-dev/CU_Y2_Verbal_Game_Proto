@@ -12,7 +12,7 @@ test('should call correct URL for year', async () => {
 		ok: true,
 	});
 	await getUserCount('year');
-	expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/userGraph?type=year');
+	expect(fetch).toHaveBeenCalledWith('/api/userGraph?type=year');
 });
 
 test('should call correct URL for month', async () => {
@@ -21,7 +21,7 @@ test('should call correct URL for month', async () => {
 		ok: true,
 	});
 	await getUserCount('month');
-	expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/userGraph?type=month');
+	expect(fetch).toHaveBeenCalledWith('/api/userGraph?type=month');
 });
 
 test('should call correct URL for week', async () => {
@@ -30,7 +30,7 @@ test('should call correct URL for week', async () => {
 		ok: true,
 	});
 	await getUserCount('week');
-	expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/userGraph?type=week');
+	expect(fetch).toHaveBeenCalledWith('/api/userGraph?type=week');
 });
 
 test('should fetch year when scale is invalid', async () => {
@@ -39,5 +39,5 @@ test('should fetch year when scale is invalid', async () => {
 		ok: true,
 	});
 	await getUserCount('invalid');
-	expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/userGraph?type=year');
+	expect(fetch).toHaveBeenCalledWith('/api/userGraph?type=year');
 });
