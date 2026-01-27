@@ -25,7 +25,7 @@ app.use(
 		allowedHeaders: ['Content-Type'], // Allow specific headers
 	}),
 );
-app.use(express.static(distPath)); // Middleware for parsing JSON
+app.use('/verbalgame', express.static(distPath)); // Middleware for parsing JSON
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(
@@ -49,7 +49,7 @@ app.use('/api/narrative', narrativeRoutes);
 app.use('/api/openAi', openAiRoutes);
 app.use('/api/sessionStats', sessionStatsRoutes);
 
-app.get("*", (req, res) => {
+app.get('verbalgame/*', (req, res) => {
 	res.sendFile(path.join(distPath, "index.html"));
 });
 
