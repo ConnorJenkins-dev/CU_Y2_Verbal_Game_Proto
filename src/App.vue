@@ -9,7 +9,7 @@ const navStyle = ref({
 });
 
 const logoImage = computed(() => {
-	const imagePath = `/Pictures/end.jpg`;
+	const imagePath = `Pictures/end.jpg`;
 	return new URL(imagePath, import.meta.url).href;
 });
 </script>
